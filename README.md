@@ -6,4 +6,7 @@ A simple, configurable scouting platform powered by Google Sheets and Forms, bas
 - Set up JSON config
 - Scrape teams at an event from TBA
 
- 
+## Config guide
+Guide to setting up NerdyScout2 for the data you want to analyze. 
+- Yes/no data (ex: did Team X climb?) should be suffixed with (Y/N)
+- Numerical data doesn't need any identifiers

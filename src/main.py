@@ -23,13 +23,15 @@ def gen_config_file(input_sheet : str, output_sheet : str, team_list : list, goo
     client = gspread.authorize(creds)
     input = client.open(input_sheet).sheet1
     input_data = input.get_all_values()
+    output = client.open(output_sheet).sheet1
+    output_data = output.get_all_values()
     config_dict.update({"input_headers" : input_data[0]})
     config_dict.update({"teams" : team_list})
+    config_dict.update({'output_headers' : output_data[0]})
 
-    opts = jsbeautifier.default_options()
-    opts.indent_size = 2
+
     with open('config.json', 'w') as fp:
-        jsbeautifier.beautify(json.dump(config_dict, fp), opts)
+        json.dump(config_dict, fp, indent= 2)
 
 
 def get_team_list(event : str, tba_key : str) -> list:
